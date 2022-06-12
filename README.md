@@ -1,5 +1,6 @@
 # Linux kernel cross compile
-Basically, this one is from [geerlingguy/cros-compile](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile), but i just take the docker files from there and create my script to compile for my raspi zero.
+
+Docker container to cross-compile linux kernel for let say raspi, or x86 system from Mac M1. But this README will only provide to compile the kernel for raspi zero (arm 32bit), as for raspi 3 and 4 (with arm 64bit), you can check directly on [geerlingguy/extras/cros-compile](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile), or [from raspi documentation](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel).
 
 
 ## Compile kernel for Raspi Zero W
@@ -10,9 +11,6 @@ cd linux
 
 # create config for raspi 32bit
 make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
-
-# if you want to change something in the kernel, or maybe want to add, you can configure with GUI
-make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
 
 # compile the kernel modules from configuration above
 make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage modules dtbs
@@ -34,3 +32,12 @@ cp arch/arm/boot/dts/overlays/README /mnt/pi-fat32/overlays/
 # and install the new modules from this kernel version
 env PATH=$PATH make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=/mnt/pi-ext4 modules_install
 ```
+
+If you want to change something in the kernel, maybe add, remove, or change modules used, you can configure it through GUI with menuconfig. Make  sure run this after `bcmrpi_defconfig` command
+```shell
+make -j4 ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- menuconfig
+```
+
+# Credits
+Thanks to
+- [geerlingguy](https://github.com/geerlingguy) for providing [this tutorial and docker files](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile)
