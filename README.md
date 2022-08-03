@@ -2,8 +2,28 @@
 
 Docker container to cross-compile linux kernel for let say raspi, or x86 system from Mac M1. But this README will only provide to compile the kernel for raspi zero (arm 32bit), as for raspi 3 and 4 (with arm 64bit), you can check directly on [geerlingguy/extras/cros-compile](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile), or [from raspi documentation](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel).
 
+## Get into the container
+
+1. Install Docker desktop (whcih includes Docker compose)
+2. Clone the repo and run the container
+   
+   ```
+   git clone https://github.com/jlian/linux-kernel-cross-compile.git
+   cd linux-kernel-cross-compile
+   
+   docker-compose up -d
+   ```
+   
+3. Log into the container 
+   
+   ```
+   docker attach cross-compile
+   ```
 
 ## Compile kernel for Raspi Zero W
+
+Basically run this script while inside the container.
+
 ```shell
 # here i clone the branch rpi-5.15.y with depth 1 since i just need the latest commit of this repo, so doesn't need to get all history
 git clone --depth 1 https://github.com/raspberrypi/linux --branch rpi-5.15.y
