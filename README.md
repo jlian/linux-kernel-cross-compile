@@ -20,8 +20,8 @@ mkdir -p /mnt/pi-fat32
 mkdir -p /mnt/pi-ext4
 
 # and mount them with sshfs
-sshfs root@raspberrypi.local:/ /mnt/pi-ext4
-sshfs root@raspberrypi.local:/boot /mnt/pi-fat32
+sshfs root@homebridge.local:/ /mnt/pi-ext4
+sshfs root@homebridge.local:/boot /mnt/pi-fat32
 
 # copy new kernel to the boot partition
 cp arch/arm/boot/zImage /mnt/pi-fat32/kernel7l.img
