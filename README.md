@@ -31,7 +31,7 @@ cd linux
 
 # (Optional) apply a patch to do remote wake up over USB-OTG
 wget https://raw.githubusercontent.com/pikvm/packages/master/packages/linux-rpi-pikvm/1003-remote-wakeup.patch
-# patch -p1 -i --dry-run 1003-remote-wakeup.patch
+# patch -p1 --dry-run -i 1003-remote-wakeup.patch
 patch -p1 -i 1003-remote-wakeup.patch
 
 # Create config for Raspberry Pi 4 32bit
