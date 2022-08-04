@@ -1,6 +1,6 @@
-# Linux kernel cross compile
+# Linux kernel cross compile on Apple Silicon
 
-Docker container to cross-compile linux kernel for let say raspi, or x86 system from Apple Silicon. This README has instructions to compile the kernel for Raspberry Pi 4 arm 32bit. Adapted from https://akhmad.id/compile-linux-kernel-on-mac-m1/. For 64bit, you can check directly on [geerlingguy/extras/cros-compile](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile), or [from raspi documentation](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel).
+Docker container to cross-compile linux kernel from Apple Silicon. This README has instructions to compile the kernel for Raspberry Pi 4 arm 32bit. Adapted from https://akhmad.id/compile-linux-kernel-on-mac-m1/. For 64bit, you can check directly on https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile, or [from raspi documentation](https://www.raspberrypi.com/documentation/computers/linux_kernel.html#cross-compiling-the-kernel).
 
 ## Get into the container
 
@@ -57,6 +57,7 @@ Run these inside the container unless otherwise noted.
    ```bash
    ssh-keygen -t ed25519 -C "build-container"
    ```
+1. Permit root login over ssh for the Pi by following either the Ansible or manual steps [here](https://github.com/geerlingguy/raspberry-pi-pcie-devices/tree/master/extras/cross-compile#copying-built-kernel-via-remote-sshfs-filesystem).
 
 1. Add key to Pi (run as root on Pi). Replace `homebridge.local` with your Pi's local hostname or IP.
 
